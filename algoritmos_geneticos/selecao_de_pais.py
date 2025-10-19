@@ -23,15 +23,16 @@ def roleta(populacao: list, fitness: list, num_selecionados: int) -> list:
 
 def torneio(populacao: list, fitness: list, num_selecionados: int, tam_torneio: int) -> list:
     selecionados = []
-
-
+    
     for _ in range(num_selecionados):
-        melhor_fit = 0
-        vencedor = None
-
-        for j in range(tam_torneio):
+        
+        index_primeiro_competidor = random.randint(0, len(populacao) - 1)
+        melhor_fit = fitness[index_primeiro_competidor]
+        vencedor = populacao[index_primeiro_competidor]
+        
+        for j in range(tam_torneio - 1): 
             index_competidor = random.randint(0, len(populacao) - 1)
-
+            
             competidor = populacao[index_competidor]
             fitness_competidor = fitness[index_competidor]
 
@@ -48,18 +49,17 @@ if __name__ == '__main__':
     simulacao_populacao = ["A", "B", "C", "D", "E"]
     simulacao_fitness = [10, 50, 20, 90, 40]
     
-    print("--- Configuração da População ---")
-    print(f"Indivíduos (e Fitness): {list(zip(simulacao_populacao, simulacao_fitness))}")
-    print(f"Total de Indivíduos: {len(simulacao_populacao)}\n")
+    print(f"Indivíduos + fit: {list(zip(simulacao_populacao, simulacao_fitness))}")
+    print(f"Total de indivíduos: {len(simulacao_populacao)}\n")
 
     k = 2
     n = 4
     pais_selecionados = torneio(
         simulacao_populacao, simulacao_fitness, num_selecionados=n, tam_torneio=k
     )
-    
-    print(f"--- Seleção por Torneio (k={k}) ---")
-    print(f"Indivíduos Selecionados ({n} vezes): {pais_selecionados}")
+
+    print(f"Torneio (k={k})")
+    print(f"Selecionados ({n} vezes): {pais_selecionados}")
 
     k = 3
     n = 4
@@ -67,5 +67,5 @@ if __name__ == '__main__':
         simulacao_populacao, simulacao_fitness, num_selecionados=n, tam_torneio=k
     )
 
-    print(f"\n--- Seleção por Torneio (k={k}) ---")
-    print(f"Indivíduos Selecionados ({n} vezes): {pais_selecionados_k3}")
+    print(f"Torneio (k={k})")
+    print(f"Selecionados ({n} vezes): {pais_selecionados_k3}")
