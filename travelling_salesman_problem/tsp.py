@@ -37,11 +37,3 @@ def valida_rota(rota, n_cidades=len(USA13), inicio=0):
         return False
         
     return True
-
-
-exemplo_rota_valida = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-exemplo_rota_invalida = [1, 1, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-
-print(f"Fitness rota válida: {calcula_fitness(exemplo_rota_valida)}")
-print(f"Rota válida? {valida_rota(exemplo_rota_valida)}")
-print(f"Rota válida? {valida_rota(exemplo_rota_invalida)}")
